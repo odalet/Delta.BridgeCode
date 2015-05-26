@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C26E4285-409F-43BF-9148-D87386C80DFF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Delta.BridgeCode</RootNamespace>
+    <AssemblyName>Delta.BridgeCode</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr4.Runtime.net45, Version=4.3.0.0, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Antlr4.Runtime.4.3.0\lib\net45\Antlr4.Runtime.net45.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analysis\Ast.cs" />
+    <Compile Include="Analysis\AstNode.cs" />
+    <Compile Include="Analysis\Namespace.cs" />
+    <Compile Include="Analysis\Identifier.cs" />
+    <Compile Include="BaseBridgeCodeCompiler.cs" />
+    <Compile Include="BridgeCodeCompiler.cs" />
+    <Compile Include="BridgeCodeSyntaxTree.cs" />
+    <Compile Include="BridgeTarget.cs" />
+    <Compile Include="CSharp\Listener.cs" />
+    <Compile Include="CSharp\Transpiler.cs" />
+    <Compile Include="CSharp\Visitor.cs" />
+    <Compile Include="IBridgeCodeTranspiler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Delta.BridgeCode.Antlr\Delta.BridgeCode.Antlr.csproj">
+      <Project>{ac68e365-81c0-4ff7-a472-ad65a53dcc6d}</Project>
+      <Name>Delta.BridgeCode.Antlr</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delta.Compilation.Antlr\Delta.Compilation.Antlr.csproj">
+      <Project>{6ee1a072-1242-46f1-967e-3c9ddbd77825}</Project>
+      <Name>Delta.Compilation.Antlr</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Delta.Compilation\Delta.Compilation.csproj">
+      <Project>{b3ee4f06-32c6-4575-9d3a-a12a19e598c5}</Project>
+      <Name>Delta.Compilation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

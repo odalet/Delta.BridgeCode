@@ -1,0 +1,14 @@
+namespace Foo.Bar
+{
+	module Baz
+	{
+		// int int;			// This is a syntax error.
+		;
+		;
+		;
+		double d;
+		double d2 = 0.0;
+		int foo;
+		string bar;		
+	}
+}
