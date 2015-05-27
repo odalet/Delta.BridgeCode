@@ -44,34 +44,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BridgeCode.g4.lexer.cs">
+    <Compile Include="g4\BridgeCode.g4.lexer.cs">
       <DependentUpon>BridgeCode.g4</DependentUpon>
     </Compile>
-    <Compile Include="BridgeCode.g4.parser.cs">
+    <Compile Include="g4\BridgeCode.g4.parser.cs">
       <DependentUpon>BridgeCode.g4</DependentUpon>
     </Compile>
-    <Compile Include="BridgeCodeV001.g4.lexer.cs">
-      <DependentUpon>BridgeCodeV001.g4</DependentUpon>
-    </Compile>
-    <Compile Include="BridgeCodeV001.g4.parser.cs">
-      <DependentUpon>BridgeCodeV001.g4</DependentUpon>
-    </Compile>
-    <Compile Include="LexerHelper.cs" />
+    <Compile Include="helpers\LexerHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Antlr4 Include="BridgeCodeV001.g4">
+    <None Include="g4\BridgeCodeV001.g4">
+      <Listener>True</Listener>
+      <Visitor>True</Visitor>
+    </None>
+    <Antlr4 Include="g4\BridgeCode.g4">
       <Generator>MSBuild:Compile</Generator>
       <CustomToolNamespace>Delta.BridgeCode.Antlr</CustomToolNamespace>
       <Listener>True</Listener>
       <Visitor>True</Visitor>
     </Antlr4>
-    <Antlr4 Include="BridgeCode.g4">
-      <Generator>MSBuild:Compile</Generator>
-      <CustomToolNamespace>Delta.BridgeCode.Antlr</CustomToolNamespace>
-      <Listener>True</Listener>
-      <Visitor>True</Visitor>
-    </Antlr4>
+    <Content Include="g4\literals.g4" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

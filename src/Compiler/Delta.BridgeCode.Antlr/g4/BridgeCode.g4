@@ -1,10 +1,10 @@
 //grammar BridgeCode;
 
 ///*
-// * Parser Rules
+// * Parser Rules 
 // */
 
-//compileUnit
+//compileUnit  
 //	:	EOF
 //	;
 
@@ -17,6 +17,8 @@
 //	;
 
 grammar BridgeCode;
+
+import literals;
 
 // Compilation unit and namespace
 compileUnit				:   namespaceDeclaration EOF;
@@ -47,7 +49,10 @@ primitiveType			:	BOOL | BYTE | SHORT | INT | LONG | FLOAT | DOUBLE | CHAR | STR
 // Names
 qualifiedName   :   identifier ('.' identifier)*;
 
-identifier	: IDENTIFIER;
+identifier	: IDENTIFIER | literal;
+
+
+
 // --------------------------------------------------------------------------------------------------------
 // LEXER tokens
 

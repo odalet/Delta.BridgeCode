@@ -9,7 +9,7 @@ namespace Delta.BridgeCode.Parsing
 
         public void SyntaxError(IRecognizer recognizer, IToken offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e)
         {
-            Console.Write("ERROR [{0}:{1}] - {2}\r\n", line, charPositionInLine, msg);
+            Console.Write("PARSING ERROR [{0}:{1}] - {2}\r\n", line, charPositionInLine, msg);
         }
 
         #endregion
