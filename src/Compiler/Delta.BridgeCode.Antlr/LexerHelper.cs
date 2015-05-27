@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Delta.BridgeCode.Antlr
+﻿namespace Delta.BridgeCode.Antlr
 {
+    // Used by BridgeCodeV001...
     internal static class LexerHelper
     {
         // Usages in the grammar:

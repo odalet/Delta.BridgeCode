@@ -43,19 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Analysis\Ast.cs" />
-    <Compile Include="Analysis\AstNode.cs" />
-    <Compile Include="Analysis\Namespace.cs" />
-    <Compile Include="Analysis\Identifier.cs" />
-    <Compile Include="BaseBridgeCodeCompiler.cs" />
-    <Compile Include="BridgeCodeCompiler.cs" />
-    <Compile Include="BridgeCodeSyntaxTree.cs" />
-    <Compile Include="BridgeTarget.cs" />
-    <Compile Include="CSharp\Listener.cs" />
-    <Compile Include="CSharp\Transpiler.cs" />
-    <Compile Include="CSharp\Visitor.cs" />
-    <Compile Include="IBridgeCodeTranspiler.cs" />
+    <Compile Include="Analysis\AnalysisService.cs" />
+    <Compile Include="Compiler.cs" />
+    <Compile Include="ComponentModel\ServiceNotFoundException.cs" />
+    <Compile Include="extensions\SyntaxTreeExtensions.cs" />
+    <Compile Include="GenerationTarget.cs" />
+    <Compile Include="Analysis\Model\Ast.cs" />
+    <Compile Include="Analysis\Model\AstNode.cs" />
+    <Compile Include="Analysis\Model\Identifier.cs" />
+    <Compile Include="Analysis\Model\Namespace.cs" />
+    <Compile Include="Analysis\Listener.cs" />
+    <Compile Include="Analysis\Visitor.cs" />
+    <Compile Include="Parsing\ParsingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Parsing\LexerErrorListener.cs" />
+    <Compile Include="Parsing\ParserErrorListener.cs" />
+    <Compile Include="Parsing\SyntaxTree.cs" />
+    <Compile Include="extensions\ServiceExtensions.cs" />
+    <Compile Include="Utils\TreeUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -65,15 +70,8 @@
       <Project>{ac68e365-81c0-4ff7-a472-ad65a53dcc6d}</Project>
       <Name>Delta.BridgeCode.Antlr</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Delta.Compilation.Antlr\Delta.Compilation.Antlr.csproj">
-      <Project>{6ee1a072-1242-46f1-967e-3c9ddbd77825}</Project>
-      <Name>Delta.Compilation.Antlr</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Delta.Compilation\Delta.Compilation.csproj">
-      <Project>{b3ee4f06-32c6-4575-9d3a-a12a19e598c5}</Project>
-      <Name>Delta.Compilation</Name>
-    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

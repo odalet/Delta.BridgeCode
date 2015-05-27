@@ -1,5 +1,6 @@
 ﻿using System;
 using Delta.BridgeCode;
+
 namespace brc
 {
     internal class Program
@@ -7,14 +8,20 @@ namespace brc
         private static void Main(string[] args)
         {
             var filename = @"D:\HOME\Delta.BridgeCode\src\Tests\test1.br";
-            var compiler = new BridgeCodeCompiler(BridgeTarget.CSharp);
 
-            var tree = compiler.ParseFile(filename);
+            var compiler = new Compiler();
+            compiler.SourceFiles.AddRange(new[] { filename });
 
-            var csharp = compiler.Transpile(tree);
+            foreach (var tree in compiler.Parse())
+            {
+                Console.WriteLine(tree.Dump());
+            }
 
-            //Console.WriteLine(tree.Dump());
+            Console.WriteLine("************************************************");
+
+            var csharp = compiler.Transpile(GenerationTarget.CSharp);
             Console.WriteLine(csharp);
+
             Console.ReadKey();
         }
     }

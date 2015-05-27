@@ -1,13 +1,13 @@
-﻿using System.Text;
+﻿using System;
 using System.Linq;
+using System.Text;
 using Antlr4.Runtime.Tree;
-using Delta.BridgeCode.Analysis;
+using Delta.BridgeCode.Analysis.Model;
 using Delta.BridgeCode.Antlr;
-using System;
 
-namespace Delta.BridgeCode.CSharp
+namespace Delta.BridgeCode.Analysis
 {
-    internal class Visitor : BridgeCodeBaseVisitor<string> //AbstractParseTreeVisitor<string>
+    internal class Visitor : BridgeCodeBaseVisitor<string>
     {
         ////private int tabCount = 0;
 
@@ -15,10 +15,10 @@ namespace Delta.BridgeCode.CSharp
         private readonly BridgeCodeParser parser;
         //private readonly StringBuilder output;
 
-        public Visitor(BridgeCodeParser bridgeCodeParser)
+        public Visitor(BridgeCodeParser bridgeCodeParser, Ast astToFill)
         {
             parser = bridgeCodeParser;
-            ast = new Ast();
+            ast = astToFill;
         }
 
         ////public override string Visit(IParseTree tree)

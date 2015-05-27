@@ -1,13 +1,11 @@
-﻿using System;
-using System.Text;
-using Antlr4.Runtime;
+﻿using System.Text;
 using Antlr4.Runtime.Tree;
-using Delta.BridgeCode.Analysis;
+using Delta.BridgeCode.Analysis.Model;
 using Delta.BridgeCode.Antlr;
 
-namespace Delta.BridgeCode.CSharp
+namespace Delta.BridgeCode.Analysis
 {
-    internal class Listener : BridgeCodeBaseListener//IParseTreeListener
+    internal class Listener : BridgeCodeBaseListener
     {
         private int tabCount = 0;
 

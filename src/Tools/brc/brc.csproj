@@ -51,14 +51,6 @@
       <Project>{c26e4285-409f-43bf-9148-d87386c80dff}</Project>
       <Name>Delta.BridgeCode</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Compiler\Delta.Compilation.Antlr\Delta.Compilation.Antlr.csproj">
-      <Project>{6ee1a072-1242-46f1-967e-3c9ddbd77825}</Project>
-      <Name>Delta.Compilation.Antlr</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Compiler\Delta.Compilation\Delta.Compilation.csproj">
-      <Project>{b3ee4f06-32c6-4575-9d3a-a12a19e598c5}</Project>
-      <Name>Delta.Compilation</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

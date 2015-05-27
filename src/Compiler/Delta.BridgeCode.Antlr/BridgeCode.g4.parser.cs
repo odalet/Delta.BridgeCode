@@ -1,15 +1,16 @@
-﻿namespace Delta.BridgeCode.Antlr
+﻿using Antlr4.Runtime;
+
+namespace Delta.BridgeCode.Antlr
 {
     partial class BridgeCodeParser
     {
-        ////partial class NamespaceDeclarationContext
-        ////{
-        ////    public QualifiedNameContext Name { get { return (QualifiedNameContext)children[1]; } }
-
-        ////    public NamespaceBodyContext Body { get { return (NamespaceBodyContext)children[0]; } }
-        ////}
-
-        public override void NotifyErrorListeners(Antlr4.Runtime.IToken offendingToken, string msg, Antlr4.Runtime.RecognitionException e)
+        /// <summary>
+        /// Notifies the error listeners.
+        /// </summary>
+        /// <param name="offendingToken">The offending token.</param>
+        /// <param name="msg">The message.</param>
+        /// <param name="e">The recognition exception.</param>
+        public override void NotifyErrorListeners(IToken offendingToken, string msg, RecognitionException e)
         {
             base.NotifyErrorListeners(offendingToken, msg, e);
         }

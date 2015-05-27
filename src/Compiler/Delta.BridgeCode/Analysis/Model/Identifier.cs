@@ -1,8 +1,13 @@
 ﻿using System;
 
-namespace Delta.BridgeCode.Analysis
+namespace Delta.BridgeCode.Analysis.Model
 {
-    internal class Identifier : AstNode
+    public interface IIdentifier
+    {
+        string Name { get; }
+    }
+
+    internal class Identifier : AstNode, IIdentifier
     {
         public Identifier(string name)
         {
@@ -10,6 +15,10 @@ namespace Delta.BridgeCode.Analysis
             Name = name;
         }
 
+        #region IIdentifier Members
+        
         public string Name { get; private set; }
+
+        #endregion
     }
 }
