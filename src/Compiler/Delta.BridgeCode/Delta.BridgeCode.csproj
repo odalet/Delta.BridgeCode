@@ -63,6 +63,7 @@
     <Compile Include="Utils\TreeUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Analysis\model.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

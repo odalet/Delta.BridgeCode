@@ -31,7 +31,8 @@ namespace Delta.BridgeCode.Analysis
             var name = VisitQualifiedName(context.qualifiedName());
             var qname = new Identifier(name);
             var ns = new Namespace(qname);
-            ast.Namespaces.Add(ns);
+            ast.AddNamespace(ns);
+            ////ast.Namespaces.Add(ns);
 
             var body = VisitNamespaceBody(context.namespaceBody());                        
             return string.Format("namespace {0}\r\n{1}", name, body);

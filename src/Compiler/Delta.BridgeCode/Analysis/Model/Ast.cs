@@ -1,23 +1,40 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 
 namespace Delta.BridgeCode.Analysis.Model
 {
-    public interface IAst 
+    public interface IAst : IAstNode
     {
-        IList<INamespace> Namespaces { get; }
+        IReadOnlyList<INamespace> Namespaces { get; }
     }
 
-    internal class Ast : IAst
+    internal class Ast : AstNode, IAst
     {
+        private readonly List<Namespace> namespaces = new List<Namespace>();
         public Ast()
         {
-            Namespaces = new List<INamespace>();            
+            Namespaces = namespaces;
+
+            base.Parent = null;
+            base.ChildrenProvider = () => Namespaces.Cast<IAstNode>();            
         }
 
         #region IAst Members
 
-        public IList<INamespace> Namespaces { get; private set; }
+        public IReadOnlyList<INamespace> Namespaces { get; private set; }
 
         #endregion
+
+        public override int ChildCount
+        {
+            get { return Namespaces.Count; }
+        }
+
+        public void AddNamespace(Namespace ns)
+        {
+            ns.SetParent(this);
+            namespaces.Add(ns);
+        }
+
     }
 }

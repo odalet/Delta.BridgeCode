@@ -2,12 +2,12 @@
 
 namespace Delta.BridgeCode.Analysis.Model
 {
-    public interface IIdentifier
+    public interface IIdentifier : IAstNode
     {
         string Name { get; }
     }
 
-    internal class Identifier : AstNode, IIdentifier
+    internal class Identifier : AstTerminalNode, IIdentifier
     {
         public Identifier(string name)
         {

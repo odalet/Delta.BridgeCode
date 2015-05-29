@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Delta.BridgeCode.Analysis.Model.Ast" Collapsed="true">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAEAAAAIAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Analysis\Model\Ast.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Delta.BridgeCode.Analysis.Model.AstNode" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAABAAAAEQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Analysis\Model\AstNode.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Delta.BridgeCode.Analysis.Model.AstChildNode" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Analysis\Model\AstNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Delta.BridgeCode.Analysis.Model.AstTerminalNode" Collapsed="true">
+    <Position X="2" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Analysis\Model\AstNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Delta.BridgeCode.Analysis.Model.Identifier" Collapsed="true">
+    <Position X="2" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Analysis\Model\Identifier.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Delta.BridgeCode.Analysis.Model.Namespace" Collapsed="true">
+    <Position X="4.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Analysis\Model\Namespace.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Delta.BridgeCode.Analysis.Model.IAst" Collapsed="true">
+    <Position X="2.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Analysis\Model\Ast.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Namespaces" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="Delta.BridgeCode.Analysis.Model.IAstNode">
+    <Position X="5" Y="5" Width="1.5" />
+    <AssociationLine Name="Parent" Type="Delta.BridgeCode.Analysis.Model.IAstNode" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.5" Y="5.312" />
+        <Point X="7.414" Y="5.312" />
+        <Point X="7.414" Y="5.625" />
+        <Point X="6.5" Y="5.625" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.602" Y="0.1" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Children" Type="Delta.BridgeCode.Analysis.Model.IAstNode" ManuallyRouted="true">
+      <Path>
+        <Point X="5" Y="5.391" />
+        <Point X="4.383" Y="5.391" />
+        <Point X="4.383" Y="5.72" />
+        <Point X="5" Y="5.72" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.277" Y="0.07" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAEQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Analysis\Model\AstNode.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Parent" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Children" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="Delta.BridgeCode.Analysis.Model.IIdentifier" Collapsed="true">
+    <Position X="7.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Analysis\Model\Identifier.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Delta.BridgeCode.Analysis.Model.INamespace" Collapsed="true">
+    <Position X="5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Analysis\Model\Namespace.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Identifier" />
+    </ShowAsAssociation>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
