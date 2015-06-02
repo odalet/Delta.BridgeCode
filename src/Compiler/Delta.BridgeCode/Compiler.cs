@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using Delta.BridgeCode.Analysis;
 using Delta.BridgeCode.Analysis.Model;
+using Delta.BridgeCode.Codegen;
 using Delta.BridgeCode.Parsing;
 
 namespace Delta.BridgeCode
@@ -10,18 +11,26 @@ namespace Delta.BridgeCode
     /// <summary>
     /// Public facade for the compilation and transpilation services.
     /// </summary>
-    public class Compiler : IServiceProvider
+    public class Compiler
     {
         private readonly List<string> sourceFiles = new List<string>();
         private readonly ServiceContainer services = new ServiceContainer();
         
+        private readonly Lazy<IParsingService> parsingService = new Lazy<IParsingService>(() => new ParsingService());
+        private readonly Lazy<IAnalysisService> analysisService = new Lazy<IAnalysisService>(() => new AnalysisService());
+        
         public Compiler() 
         {
-            // Fill the services container
+        }
 
-            // TODO: allow instances caching (singleton) or re-creation
-            services.AddService<IParsingService>(() => new ParsingService()); 
-            services.AddService<IAnalysisService>(() => new AnalysisService());
+        private IParsingService ParsingService
+        {
+            get { return parsingService.Value;  }
+        }
+
+        private IAnalysisService AnalysisService
+        {
+            get { return analysisService.Value; }
         }
 
         public List<string> SourceFiles
@@ -31,13 +40,12 @@ namespace Delta.BridgeCode
         
         public IEnumerable<SyntaxTree> Parse()
         {
-            var parsingService = this.GetService<IParsingService>(mandatory: true);
             foreach (var file in SourceFiles)
             {
                 SyntaxTree tree = null;
                 try
                 {
-                    tree = parsingService.Parse(file);
+                    tree = ParsingService.Parse(file);
                 }
                 catch (Exception ex)
                 {
@@ -51,26 +59,21 @@ namespace Delta.BridgeCode
 
         public IAst Analyze()
         {
-            var analysisService = this.GetService<IAnalysisService>(true);
-            return analysisService.Analyze(Parse());
+            return AnalysisService.Analyze(Parse());
         }
 
         public string Transpile(GenerationTarget target)
         {
             //return "TODO: " + target.ToString();
 
-            var analysisService = this.GetService<IAnalysisService>(true);
+            var analysisService = AnalysisService;
             var ast = analysisService.Analyze(Parse());
-            return analysisService.StringResult;
+
+            var generator = new CodegenService();
+            var result = generator.Generate(ast);
+
+            return result.Result;
+            //return analysisService.StringResult;
         }
-
-        #region IServiceProvider Members
-
-        object IServiceProvider.GetService(Type serviceType)
-        {
-            return services.GetService(serviceType);
-        }
-
-        #endregion
     }
 }

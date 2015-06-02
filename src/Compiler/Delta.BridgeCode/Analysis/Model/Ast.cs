@@ -35,6 +35,5 @@ namespace Delta.BridgeCode.Analysis.Model
             ns.SetParent(this);
             namespaces.Add(ns);
         }
-
     }
 }
