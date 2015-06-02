@@ -44,8 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Analysis\AnalysisService.cs" />
+    <Compile Include="Analysis\Model\TypeDeclaration.cs" />
+    <Compile Include="Codegen\CodegenService.cs" />
+    <Compile Include="Codegen\CSharp\CodeGenerator.cs" />
+    <Compile Include="Codegen\GenerationResult.cs" />
     <Compile Include="Compiler.cs" />
-    <Compile Include="ComponentModel\ServiceNotFoundException.cs" />
     <Compile Include="extensions\SyntaxTreeExtensions.cs" />
     <Compile Include="GenerationTarget.cs" />
     <Compile Include="Analysis\Model\Ast.cs" />
@@ -59,7 +62,6 @@
     <Compile Include="Parsing\LexerErrorListener.cs" />
     <Compile Include="Parsing\ParserErrorListener.cs" />
     <Compile Include="Parsing\SyntaxTree.cs" />
-    <Compile Include="extensions\ServiceExtensions.cs" />
     <Compile Include="Utils\TreeUtils.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -32,11 +32,14 @@ namespace Delta.BridgeCode.Analysis
             var qname = new Identifier(name);
             var ns = new Namespace(qname);
             ast.AddNamespace(ns);
-            ////ast.Namespaces.Add(ns);
 
+            currentNamespace = ns;
             var body = VisitNamespaceBody(context.namespaceBody());                        
             return string.Format("namespace {0}\r\n{1}", name, body);
         }
+
+        // HACK!!! Find a way to pass the parent AstNode to the currently processed parser node
+        private Namespace currentNamespace = null;
 
         public override string VisitNamespaceBody(BridgeCodeParser.NamespaceBodyContext context)
         {
@@ -45,7 +48,7 @@ namespace Delta.BridgeCode.Analysis
 
             foreach (var ctx in context.typeDeclaration())
             {
-                var decl = VisitTypeDeclaration(ctx);
+                var decl = VisitTypeDeclaration(ctx);                
                 Append(builder, 1, decl);
             }
 
@@ -57,6 +60,11 @@ namespace Delta.BridgeCode.Analysis
         public override string VisitModuleDeclaration(BridgeCodeParser.ModuleDeclarationContext context)
         {
             var name = VisitIdentifier(context.identifier());
+            
+            var identifier = new Identifier(name);
+            var tdecl = new TypeDeclaration(identifier, TypeKind.Module);
+            currentNamespace.AddTypeDeclaration(tdecl); // HACK!!!
+
             var body = VisitModuleBody(context.moduleBody());
             return string.Format("public static class {0}\r\n{1}", name, body);
         }
